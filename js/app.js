@@ -33,56 +33,28 @@ var tracker = {
   genRandChoice: function() {
     return Math.floor(Math.random() * comedianList.length);
   },
+
   getImages: function() {
     var imgPath1 = comedianList[this.genRandChoice()].filepath;
-
-
     var imgPath2 = comedianList[this.genRandChoice()].filepath;
-
-
     while (imgPath1 === imgPath2) {
       imgPath2 = comedianList[this.genRandChoice()].filepath;
-    }
-
+  }
     var imageFirst = document.getElementById('image1');
+    //imageFirst.addEventListener("click", );
 
     var imageSecond = document.getElementById('image2');
+    //imageSecond.addEventListener("click", );
 
     imageFirst.src = imgPath1;
     imageSecond.src = imgPath2;
     return [imgPath1,imgPath2];
 
-    // var el1 = document.getElementById("image1");
-    // el1.addEventListener("click", tracker.getImages);
-
   },
 
 
 };
+
 tracker.getImages();
 
-//chart js
-// var countries= document.getElementById("countries").getContext("2d");
-// new Chart(countries).Pie(pieData, pieOptions);
-// var pieData = [
-//   {
-//     value: 20,
-//     color:"#878BB6"
-//   },
-//   {
-//     value : 40,
-//     color : "#4ACAB4"
-//   },
-//   {
-//     value : 10,
-//     color : "#FF8153"
-//   },
-//   {
-//     value : 30,
-//     color : "#FFEA88"
-//   }
-// ];
-// var pieOptions = {
-//   segmentShowStroke : false,
-//   animateScale : true
-// }
+

@@ -33,26 +33,24 @@ var tracker = {
   genRandChoice: function() {
     return Math.floor(Math.random() * comedianList.length);
   },
-
   getImages: function() {
     var imgPath1 = comedianList[this.genRandChoice()].filepath;
     var imgPath2 = comedianList[this.genRandChoice()].filepath;
+
     while (imgPath1 === imgPath2) {
       imgPath2 = comedianList[this.genRandChoice()].filepath;
-  }
+    }
+
     var imageFirst = document.getElementById('image1');
-    //imageFirst.addEventListener("click", );
+    imageFirst.addEventListener("click", this.getImages);
 
     var imageSecond = document.getElementById('image2');
-    //imageSecond.addEventListener("click", );
+    imageSecond.addEventListener("click", this.getImages);
 
     imageFirst.src = imgPath1;
     imageSecond.src = imgPath2;
     return [imgPath1,imgPath2];
-
   },
-
-
 };
 
 tracker.getImages();

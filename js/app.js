@@ -7,23 +7,24 @@ comedianStats = function(filepath, comedian) {
   comedianVotes.push(this); //pushing this object in to comedianVotes
 };
 
-console.log(comedianStats);
 
-var comedianList = [
-  new comedianStats('../images/amy.jpg', 'Amy Poehler'),
-  new comedianStats('../images/aziz.jpg', 'Aziz Ansari'),
-  new comedianStats('../images/billburr.jpg', 'Bill Burr'),
-  new comedianStats('../images/carlin.jpg', 'George Carlin'),
-  new comedianStats('../images/chappelle.jpg', 'Dave Chappelle'),
-  new comedianStats('../images/chelsea.jpg', 'Chelsea Peretti'),
-  new comedianStats('../images/doug.jpg', 'Doug Benson'),
-  new comedianStats('../images/esther.jpg', 'Lil\' Esther'),
-  new comedianStats('../images/louis.jpg', 'Louis CK'),
-  new comedianStats('../images/richard.jpg', 'Richard Pryor'),
-  new comedianStats('../images/sarah.jpg', 'Sarah Silverman'),
-  new comedianStats('../images/seinfield.jpg', 'Jerry Seinfield')];
 
-console.log(comedianList);
+new comedianStats('../images/amy.jpg', 'Amy Poehler');
+new comedianStats('../images/aziz.jpg', 'Aziz Ansari');
+new comedianStats('../images/billburr.jpg', 'Bill Burr');
+new comedianStats('../images/carlin.jpg', 'George Carlin');
+new comedianStats('../images/chappelle.jpg', 'Dave Chappelle');
+new comedianStats('../images/chelsea.jpg', 'Chelsea Peretti');
+new comedianStats('../images/doug.jpg', 'Doug Benson');
+new comedianStats('../images/esther.jpg', 'Lil\' Esther');
+new comedianStats('../images/louis.jpg', 'Louis CK');
+new comedianStats('../images/richard.jpg', 'Richard Pryor');
+new comedianStats('../images/sarah.jpg', 'Sarah Silverman');
+new comedianStats('../images/seinfield.jpg', 'Jerry Seinfield');
+
+
+var imageFirst = document.getElementById('image1');
+var imageSecond = document.getElementById('image2');
 
 
 
@@ -31,28 +32,43 @@ console.log(comedianList);
 
 var tracker = {
   genRandChoice: function() {
-    return Math.floor(Math.random() * comedianList.length);
+    return Math.floor(Math.random() * comedianVotes.length);
   },
   getImages: function() {
-    var imgPath1 = comedianList[this.genRandChoice()].filepath;
-    var imgPath2 = comedianList[this.genRandChoice()].filepath;
+    var img1 = comedianVotes[this.genRandChoice()];
+    var img2 = comedianVotes[this.genRandChoice()];
 
-    while (imgPath1 === imgPath2) {
-      imgPath2 = comedianList[this.genRandChoice()].filepath;
+    while (img1 === img2) {
+      img2 = comedianVotes[this.genRandChoice()];
     }
 
-    var imageFirst = document.getElementById('image1');
-    imageFirst.addEventListener("click", this.getImages);
+    imageFirst.addEventListener("click", this.voteForOne);
+    imageSecond.addEventListener("click", this.voteForTwo);
 
-    var imageSecond = document.getElementById('image2');
-    imageSecond.addEventListener("click", this.getImages);
-
-    imageFirst.src = imgPath1;
-    imageSecond.src = imgPath2;
-    return [imgPath1,imgPath2];
+    imageFirst.src = img1.filepath;
+    imageSecond.src = img2.filepath;
+    imageFirst.data = comedianVotes.indexOf(img1);
+    imageSecond.data = comedianVotes.indexOf(img2);
+    imageFirst.name = img1.comedian;
+    imageSecond.name = img2.comedian;
   },
+
+  voteForOne: function() {
+    var ourNumber = imageFirst.data;
+    comedianVotes[ourNumber].votes += 1;
+    tracker.getImages();
+  },
+
+  voteForTwo: function() {
+    var ourNumber = imageSecond.data;
+    comedianVotes[ourNumber].votes += 1;
+    tracker.getImages();
+  }
+
 };
 
+
+
+
+
 tracker.getImages();
-
-

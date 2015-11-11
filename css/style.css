@@ -12,9 +12,7 @@ body {
 /* We tell all items to be 100% width */
 .header, .main, .nav, .aside, .footer {
   flex: 1 100%;
-}
-.header, .main, .nav, .aside, .footer {
-  border:2px solid;
+  border:40px solid;
 }
 
 /* We rely on source order for mobile-first approach

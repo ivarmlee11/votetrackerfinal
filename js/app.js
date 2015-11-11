@@ -1,7 +1,6 @@
 
 
 
-
 comedianVotes = [];
 
 comedianStats = function(filepath, comedian) {
@@ -51,8 +50,7 @@ var tracker = {
       img2 = comedianVotes[this.genRandChoice()];
     }
 
-    imageFirst.addEventListener("click", this.voteForOne);
-    imageSecond.addEventListener("click", this.voteForTwo);
+
 
     imageFirst.src = img1.filepath;
     imageSecond.src = img2.filepath;
@@ -70,35 +68,38 @@ var tracker = {
   voteForOne: function() {
     var ourNumber = imageFirst.data;
     comedianVotes[ourNumber].votes += 1;
+    barData.datasets[0].data[ourNumber] += 1;
+    new Chart(income).Bar(barData);
     tracker.getImages();
-
   },
 
   voteForTwo: function() {
     var ourNumber = imageSecond.data;
     comedianVotes[ourNumber].votes += 1;
+    barData.datasets[0].data[ourNumber] += 1;
+    new Chart(income).Bar(barData);
     tracker.getImages();
   },
 
 };
 
-
-
-
-////copy paste static value from http://www.webdesignerdepot.com/2013/11/easily-create-stunning-animated-charts-with-chart-js/
 var barData = {
-                labels : comedianVotes,
-                datasets : [
-                    {
-                        fillColor : "#48A497",
-                        strokeColor : "#48A4D1",
-                        data : [1,2]
-                    }
-                ]
+  labels: [],
+  datasets: [
+    {
+      fillColor: '#999999',
+      strokeColor: '#000000',
+      data: []
+    }
+  ]
 }
-              // get bar chart canvas
+
+for (var i = 0; i < comedianVotes.length; i++) {
+  barData.labels.push(comedianVotes[i].comedian);
+  barData.datasets[0].data.push(0);
+}
+
 var income = document.getElementById("income").getContext("2d");
- // draw bar chart
 new Chart(income).Bar(barData);
 
 
@@ -108,8 +109,9 @@ new Chart(income).Bar(barData);
 
 
 
-
-
+imageFirst.addEventListener("click", tracker.voteForOne);
+imageSecond.addEventListener("click", tracker.voteForTwo);
 
 
 tracker.getImages();
+

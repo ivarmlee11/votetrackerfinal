@@ -4,7 +4,7 @@ comedianStats = function(filepath, comedian) {
   this.filepath = filepath;
   this.comedian = comedian;
   this.votes = 0;
-  comedianVotes.push(this); //pushing this object in to comedianVotes
+  comedianVotes.push(this); //pushing this object in to comedianVotes array
 };
 
 
@@ -25,6 +25,11 @@ new comedianStats('../images/seinfield.jpg', 'Jerry Seinfield');
 
 var imageFirst = document.getElementById('image1');
 var imageSecond = document.getElementById('image2');
+
+var nameFirst = document.getElementById('named1');   //name info
+var nameSecond = document.getElementById('named2');  //name info
+
+
 
 
 
@@ -49,8 +54,13 @@ var tracker = {
     imageSecond.src = img2.filepath;
     imageFirst.data = comedianVotes.indexOf(img1);
     imageSecond.data = comedianVotes.indexOf(img2);
+
     imageFirst.name = img1.comedian;
+    console.log(imageFirst.name);
+    document.getElementById("named1").innerHTML = imageFirst.name;
     imageSecond.name = img2.comedian;
+    console.log(imageSecond.name);
+    document.getElementById("named2").innerHTML = imageSecond.name;
   },
 
   voteForOne: function() {
@@ -63,11 +73,13 @@ var tracker = {
     var ourNumber = imageSecond.data;
     comedianVotes[ourNumber].votes += 1;
     tracker.getImages();
-  }
+  },
+
+
+
+
 
 };
-
-
 
 
 

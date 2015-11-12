@@ -1,6 +1,7 @@
 /*got this code from flexbox example pages via CODE PEN*/
 /*https://css-tricks.com/snippets/css/a-guide-to-flexbox/*/
 body {
+  text-shadow: white 0px 0px 12px;
   background-color: silver;
   text-align: center;
   font-weight: bold;
@@ -37,6 +38,7 @@ body {
 }
 .main {
   min-width: 400px;
+  margin-top: 20px;
 }
 
 

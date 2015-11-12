@@ -26,6 +26,9 @@ body {
   background-image: url("../images/river.png");
   color: DarkCyan;
 }
+.main {
+  min-width: 400px;
+}
 
 
 .nav {

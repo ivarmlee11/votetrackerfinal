@@ -71,6 +71,7 @@ var tracker = {
     barData.datasets[0].data[ourNumber] += 1;
     new Chart(income).Bar(barData);
     tracker.getImages();
+    document.getElementById("playAgain").innerHTML = "Vote again!";
   },
 
   voteForTwo: function() {
@@ -79,6 +80,7 @@ var tracker = {
     barData.datasets[0].data[ourNumber] += 1;
     new Chart(income).Bar(barData);
     tracker.getImages();
+    document.getElementById("playAgain").innerHTML = "Vote again!";
   },
 
 };
@@ -87,7 +89,7 @@ var barData = {
   labels: [],
   datasets: [
     {
-      fillColor: '#999999',
+      fillColor: '#000000',
       strokeColor: '#000000',
       data: []
     }

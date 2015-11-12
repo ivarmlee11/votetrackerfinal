@@ -1,8 +1,12 @@
-/*copied from FlexBox example site*/
+/*got this code from flexbox example pages via CODE PEN*/
 /*https://css-tricks.com/snippets/css/a-guide-to-flexbox/*/
 body {
   background-color: silver;
   text-align: center;
+  font-weight: bold;
+  font-family: Arial, Verdana, sans-serif;
+  font-size: 200%;
+
 }
 .wrapper {
   display: flex;
@@ -10,9 +14,31 @@ body {
 }
 
 /* We tell all items to be 100% width */
-.header, .main, .nav, .aside, .footer {
-  flex: 1 100%;
-  border:40px solid;
+.header, .nav, .aside, .footer{
+  flex: 1 80%;
+  border:0px solid;
+}
+.asideOne:active {
+  background-image: url("../images/river.png");
+  color: DarkCyan;
+}
+.asideTwo:active {
+  background-image: url("../images/river.png");
+  color: DarkCyan;
+}
+
+
+.nav {
+  text-align: center;
+}
+.fakeFooter {
+  background-image: url("../images/river.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: .2;
+  z-index: -1;
+}
+
 }
 
 /* We rely on source order for mobile-first approach
